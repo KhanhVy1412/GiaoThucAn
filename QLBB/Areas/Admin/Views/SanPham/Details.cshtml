@@ -1,0 +1,65 @@
+﻿@model QLBB.Models.SanPham
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/NewLayout.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    .lop-thong-tin-sp {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .lop-thong-tin-sp-trai {
+        float: left;
+        width: 48%;
+        text-align: center;
+        /*        border: 3px solid transparent;
+        border-color: black;
+        border-radius: 20px;
+        background-color: white;*/
+    }
+
+    .lop-thong-tin-sp-phai {
+        float: right;
+        width: 50%;
+        text-align: left;
+        word-wrap: break-word;
+        padding-top: 30px;
+        font-size: 100%;
+        padding-left: 100px;
+        font-weight: bold;
+    }
+    .checked {
+  color: orange;
+}
+</style>
+
+<div>
+    <div class="lop-thong-tin-sp">
+        <div class="lop-thong-tin-sp-trai">
+            <img src="/@Model.HinhSP" style="border-radius:5px;width:70%" />
+        </div>
+        <div class="lop-thong-tin-sp-phai">
+            <p style="font-size:160%">@Html.DisplayFor(model => model.TenSP)</p>
+            <p style="font-size:90%">@Html.DisplayFor(model => model.PhanLoai.TenPhanLoai)</p>
+            @*<p>&nbsp;</p>*@  
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <p style="font-size:110%;color:red">@Html.DisplayFor(model => model.DonGia)</p> 
+           
+            <p style="color:#19abf2">Ghi chú:</p>
+            <p>@Html.DisplayFor(model => model.GhiChu)</p>
+            <br />
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.MaSP }) 
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+        </div>
+    </div>

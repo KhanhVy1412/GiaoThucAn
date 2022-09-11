@@ -1,0 +1,128 @@
+﻿<style>
+    body {
+        margin-top: 0 auto;
+        font-family: "Times New Roman", Times, serif;
+    }
+
+    .lop-sp {
+        float: left;
+        width: 28%;
+        text-align: center;
+        padding: 10px 5px;
+        margin: 10px auto;
+        font-weight: bold;
+        word-wrap: break-word;
+        margin-left: 3%;
+        margin-right: 2%;
+        /*border: 2px solid transparent;
+        border-color: gray;*/
+        font-size: 100%;
+        background-color: white;
+        border-radius: 8px;
+        background-color: #fbf3f3;
+        height: 165px;
+    }
+
+        .lop-sp:hover {
+            transform: scale(1.07);
+        }
+
+        .lop-sp .tua-sp {
+            word-wrap: break-word;
+            font-size: 100%;
+            color: black;
+            text-align: left;
+            margin-bottom: 10px;
+            float: right;
+            width: 58%;
+        }
+
+    .tua-sp :link {
+        color: black;
+    }
+
+    .lop-sp .lop-hinh {
+        text-align: center;
+        padding: 0;
+        margin-bottom: 2px;
+        float: left;
+        width: 40%;
+        margin-top: 5px;
+    }
+</style>
+@using QLBB.Models;
+
+@model IEnumerable<QLBB.Models.SanPham>
+@*@model List<QLBB.Models.ViewModels.bigmodel>*@
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Menudoc.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<h2>&nbsp;</h2>
+@if (TempData["AlertMessage"] != null)
+{
+    <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+        @TempData["AlertMessage"]
+    </div>
+}
+@*<section id="home" class="w3l-banner py-5">
+    <div class="container py-lg-5 py-md-4">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="~/NhaHang/Detail"><i class="fa fa-pencil-square-o">Đặt đơn</i>@ViewBag.ThongKeDon</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="~/DanhGia/XemDanhGia"><i class="fa fa-comments" aria-hidden="true"> Bình luận</i></a>
+            </li>
+        </ul>
+      @Html.ActionLink("1","XemDanhGia","DanhGia",new { id = ViewBag.MaMenu })
+            @Html.ActionLink("XemDanhGia", "DanhGia")*@
+            @foreach (var item in Model)
+            {
+
+                <div class="lop-sp">
+
+                    <div class="lop-hinh">
+                        @*<img width="100%" src="/@item.HinhSP" alt="HinhSP" />*@
+                        @*<img src='@Url.Content("~/Content/Images/MyLinkImage.png")' />*@
+                        <a>
+                            <img style="width:130px;height:130px;border-radius:10px" src="/@item.HinhSP" alt="HinhSP" />
+                        </a>
+                    </div>
+                    <p class="tua-sp" style="font-size:90%">
+
+                        <a>
+                            @Html.DisplayFor(modelItem => item.TenSP)
+                        </a>
+                    </p>
+                    <p class="tua-sp" style="font-size:80%;color:dimgray">
+                        @Html.DisplayFor(modelItem => item.GhiChu)
+
+                    </p>
+                    @*<p class="tua-sp" style="font-size:90%;color:dimgray">
+                    &nbsp;
+                    </p>*@
+                    <p class="tua-sp" style="font-size:90%;">
+                        <a style="float:left;width:70%">
+                            @String.Format("{0:#,0}", item.DonGia)
+                        </a>
+                        <a class="btn btn-success" @*onclick="myFunction()"*@ href="@Url.Action("ThemGioHang", "GioHang", new { @iMaSP=item.MaSP, @iMaMenu=item.MaMenu,@strURL=Request.Url.ToString()})" style="float:right;width:25%">
+                            @*<span class="glyphicon glyphicon-shopping-cart"></span>*@ <i class="fa fa-plus" aria-hidden="true"></i>
+                        </a>
+                    </p>
+
+                </div>
+            }
+</div>
+</section>
+@if (TempData["Msg"] != null)
+{
+    <script>
+        confirm('@Html.Raw(TempData["Msg"])')
+    </script>
+
+}
+
+
+

@@ -1,0 +1,70 @@
+﻿
+<style>
+    .lop-sp {
+        float: left;
+        width: 27%;
+        text-align: center;
+        padding: 10px 5px;
+        margin: 0 auto;
+        font-weight: bold;
+        word-wrap: break-word;
+        /*margin-top:17%;*/
+        margin-left: 4%;
+        margin-right: 2%;
+        font-size: 100%;
+    }
+
+        .lop-sp:hover {
+            transform: scale(1.07);
+        }
+
+        .lop-sp .tua-sp {
+            word-wrap: break-word;
+            font-size: 100%;
+            color: black;
+            text-align: left;
+            margin-bottom: 10px;
+            margin-left: 10px;
+        }
+
+    .tua-sp:link {
+        color: black;
+    }
+
+    a:link {
+        color: black;
+    }
+
+    .lop-sp .lop-hinh {
+        text-align: center;
+        padding: 0;
+        margin-bottom: 15px;
+    }
+</style>
+@model IEnumerable<QLBB.Models.Menu>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Menudoc.cshtml";
+
+}
+<h4>Kết quả tìm kiếm:</h4>
+@foreach (var item in Model)
+{
+    <div class="lop-sp">
+        <div class="lop-hinh ">
+            <a href='@Url.Action("Details", "NhaHang", new { id = item.MaMenu })'>
+                <img style="width:275px;height:170px;border-radius:15px" src="/@item.Logo" alt="HinhSP" />
+            </a>
+        </div>
+
+        <p class="tua-sp" style="font-size:120%;color:black">
+            <a style="color:black" href='@Url.Action("Details", "NhaHang", new { id = item.MaMenu })'>
+                @Html.DisplayFor(modelItem => item.TenMenu)
+            </a>- @Html.DisplayFor(modelItem => item.DiaChi)
+        </p>
+        <p class="tua-sp" style="font-size:120%;color:dimgray">
+            @Html.DisplayFor(modelItem => item.PhanLoaiMN.TenPhanLoaiMN)
+        </p>
+
+    </div>
+}

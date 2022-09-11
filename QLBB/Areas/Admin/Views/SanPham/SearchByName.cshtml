@@ -1,0 +1,59 @@
+﻿@model IEnumerable<QLBB.Models.SanPham>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/NewLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" @*width="100%"*@>
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.TenSP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaPhanLoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HinhSP)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonGia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhanLoai.TenPhanLoai)
+            </td>
+            <td>
+                <img style="width:120px;height:100px;" src="/@item.HinhSP" alt="HinhSP" />
+            </td>
+
+            <td>
+                <a class="btn btn-primary" href="~/Admin/SanPham/Edit?id=@item.MaSP" role="button">Edit</a>
+                <a class="btn btn-success" href="~/Admin/SanPham/Details?id=@item.MaSP" role="button">Details</a>
+                <a class="btn btn-danger" href="~/Admin/SanPham/Delete?id=@item.MaSP" role="button">Delete</a>
+
+            </td>
+        </tr>
+    }
+
+</table>

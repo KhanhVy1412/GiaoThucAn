@@ -1,0 +1,71 @@
+﻿@model QLBB.Models.SanPham
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/NewLayout.cshtml";
+}
+<style>
+    .lop-thong-tin-sp {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .lop-thong-tin-sp-trai {
+        float: left;
+        width: 48%;
+        text-align: center;
+        /*        border: 3px solid transparent;
+        border-color: black;
+        border-radius: 20px;
+        background-color: white;*/
+    }
+
+    .lop-thong-tin-sp-phai {
+        float: right;
+        width: 50%;
+        text-align: left;
+        word-wrap: break-word;
+        padding-top: 30px;
+        font-size: 100%;
+        padding-left: 100px;
+        font-weight: bold;
+    }
+
+    .checked {
+        color: orange;
+    }
+</style>
+
+<h4 style="text-align:center;color:red">Are you sure you want to delete this???</h4>
+<br/>
+<div>
+    <div class="lop-thong-tin-sp">
+        <div class="lop-thong-tin-sp-trai">
+            <img src="/@Model.HinhSP" style="border-radius:5px;width:70%" />
+        </div>
+        <div class="lop-thong-tin-sp-phai">
+            <p style="font-size:160%">@Html.DisplayFor(model => model.TenSP)</p>
+            <p style="font-size:90%">@Html.DisplayFor(model => model.PhanLoai.TenPhanLoai)</p>
+            @*<p>&nbsp;</p>*@
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <p style="font-size:110%;color:red">@Html.DisplayFor(model => model.DonGia)</p>
+
+            <p style="color:#19abf2">Ghi chú:</p>
+            <p>@Html.DisplayFor(model => model.GhiChu)</p>
+            <br />
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,414 @@
+﻿@{
+    QLBB.Models.KhachHang userInfor = (QLBB.Models.KhachHang)Session["Taikhoan"];
+}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>GapFood - Giao thức ăn nhanh & tiện lợi</title>
+    <link href="//fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="~/Content/LayoutUser/css/style-starter.css">
+</head>
+
+<body>
+    <header id="site-header" class="fixed-top">
+        <section class="w3l-header-4">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <h1>
+                        <a class="navbar-brand" href="index.html">
+                            GAPFOOD
+                        </a>
+                    </h1>
+                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+                            data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="fa icon-expand fa-bars"></span>
+                        <span class="fa icon-close fa-times"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-lg-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="~/NhaHang/Index">Home </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/About/Index">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/NhaHang/XemCTHD">Đơn Hàng</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+                        <div class="dropdown show" style="margin-left:48%">
+                            <a class="class=" btn btn-primary btn-style d-none d-lg-block mr-2 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:190%"></i>
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+                                @if (Session["TaiKhoan"] == null)
+                                {
+                                    <a style="padding:4px 24px">Tài khoản</a>
+                                    <a class="dropdown-item" href="~/DangNhap/DangKy">
+                                        <div href="">Đăng ký</div>
+                                    </a>
+                                <a class="dropdown-item" href="~/DangNhap/DangNhap">
+                                            <div href="~/NhaHang/DangNhap/DangNhap">Đăng nhập</div>
+                                        </a>
+                                }
+                                else
+                                {
+                                    <a class="nav-link text-dark text-uppercase" style="padding:4px 24px">@userInfor.HoTen</a>
+                                        <a class="dropdown-item" href="~/DangNhap/Signout">Đăng xuất</a>
+                                }
+
+
+                                @*<a class="dropdown-item" href="#">Something else here</a>*@
+                            </div>
+                        </div>
+
+                        <ul class="navbar-nav search-right mt-lg-0 mt-2">
+                            <li class="nav-item mr-3" title="Search">
+                                <a href="#search" class="btn search-search">
+                                    <span class="fa fa-search" aria-hidden="true"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                @Html.Action("GiohangPartial", "GioHang")
+                            </li>
+                        </ul>
+
+                        <!-- //toggle switch for light and dark theme -->
+                        <!-- search popup -->
+                        <div id="search" class="pop-overlay">
+                            <div class="popup">
+                                <form action="~/NhaHang/SearchByName" method="get" class="d-sm-flex">
+                                    <input type="search" placeholder="Search.." name="name">
+                                    <button type="submit">Search</button>
+                                    <a class="close" href="~/NhaHang/SearchByName">&times;</a>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /search popup -->
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                </nav>
+            </div>
+        </section>
+    </header>
+    <section id="home" class="w3l-banner py-5">
+        <div class="container py-lg-5 py-md-4">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-sm-12 mt-lg-0 mt-4">
+                    <span class="subhny-title mb-2">Nhanh và tiện lợi</span>
+                    <h3 class="mb-4">
+                        Giao hàng<br>
+                        tận nơi
+                    </h3>
+                    <p>
+                        Trang đặt thức ăn nhanh , tiện lợi dễ sử dụng 
+
+                    </p>
+                    <div class="mt-sm-5 mt-4">
+                        <a class="btn btn-outline-primary btn-style mr-2" href="about.html">
+                            Đọc thêm <span class="fa fa-chevron-right"></span>
+                        </a>
+                        <a class="btn btn-primary btn-style" href="~/NhaHang/List">
+                            Đặt ngay <span class="fa fa-chevron-right"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-8 col-sm-10 mt-lg-0 mt-5">
+                    <div class="img-effect text-lg-center">
+                        <img src="~/Content/LayoutUser/images/pic1.png" alt="banner" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //banner section -->
+    @*<section class="w3l-products py-5" id="projects">
+        <div class="container py-lg-3">
+            <div class="header-section text-center mx-auto">
+                <span class="subhny-title text-center mb-2">Quick Pick</span>
+                <h3 class="hny-title text-center mb-5">Nhà Hàng</h3>
+            </div>
+            <div class="mt-5">
+                <div class="mx-auto">
+
+                    <div id="parentHorizontalTab">
+                        <div class="resp-tabs-container hor_1">
+                            <div class="products-content">
+
+                                @RenderBody()
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+
+    <section class="w3l-products py-5" id="projects">
+        <div class="container py-lg-3">
+            <div class="header-section text-center mx-auto">
+                <span class="subhny-title text-center mb-2">Chọn nhanh</span>
+                <h3 class="hny-title text-center mb-5">Phổ biến</h3>
+            </div>
+            <div class="mt-5">
+                <div class="mx-auto">
+                    <div id="parentHorizontalTab">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="w3l-features py-5" id="work">
+        <div class="call-w3 py-lg-5 py-md-4">
+            <div class="container">
+             
+            </div>
+        </div>
+    </section>
+
+
+    </br>
+    <!-- //our products -->
+    <!-- /bottom-grids-->
+    <section class="w3l-bottom-grids-6 py-5">
+        <div class="container py-lg-5 py-md-4">
+            <span class="subhny-title text-center mb-2">Đặt hàng trực tuyến</span>
+            <h3 class="hny-title text-center mb-5">Hướng dẫn sử dụng</h3>
+            <div class="grids-area-hny main-cont-wthree-fea row">
+                <div class="col-lg-4 col-md-6 grids-feature">
+                    <div class="area-box">
+                        <span class="fa fa-mobile"></span>
+                        <h4><a href="#feature" class="title-head">Đặt thức ăn trực tuyến</a></h4>
+                        <p>
+                            Với sự phát triển của thời đại công nghệ , hiện đại hơn thì việc đặt gọi thức ăn
+                            với hình thức trực tuyến.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 grids-feature mt-md-0 mt-4">
+                    <div class="area-box box-active">
+                        <span class="fa fa-gift"></span>
+                        <h4><a href="#feature" class="title-head">Giao hàng tận nơi</a></h4>
+                        <p>
+                           Thức ăn sẽ được nhà hàng giao cho đơn vị vận chuyển , và giao tận nơi đến tay bạn
+                            
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 grids-feature mt-lg-0 mt-4">
+                    <div class="area-box">
+                        <span class="fa fa-building-o"></span>
+                        <h4><a href="#feature" class="title-head">Tiện dụng và tiện lợi</a></h4>
+                        <p>
+                            Chỉ với 1 nút bấm và trong vòng 30' thức ăn se được giao đến tay bạn.
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+    <!-- //bottom-grids-->
+    <!-- home page block2 grids -->
+    <section class="w3l-grids-3 py-5">
+        <div class="container py-lg-5 py-md-4">
+            <div class="row bottom-ab-grids">
+                <div class="col-lg-6 bottom-ab-left pr-lg-5">
+                    <span class="subhny-title mb-2">Nhanh hơn cả ánh sáng</span>
+                    <h3 class="hny-title mb-4">Gợi ý cho bụng đói của bạn</h3>
+                    <p class="">
+                        Tìm kiếm giải pháp thích hợp cho để giải quyết vấn đề ăn uống
+                        Việc ăn uống sẽ ảnh hướng rất quan trọng cho cả công việc sau này và sức khỏa người dụng
+                        vì thế hãy đặt thức ăn ngay.
+                    </p>
+                    <ul class="cont-4 mt-4">
+                        <li><span class="fa fa-check"></span>Đặt hàng tiện lợi , nhanh chóng</li>
+                        <li><span class="fa fa-check"></span>Giao hàng trong vòng 30'</li>
+                        <li><span class="fa fa-check"></span>An toàn vệ sinh thực phẩm</li>
+                    </ul>
+                    <a href="about.html" class="btn btn-style btn-primary mt-lg-5 mt-4">
+                        Đọc thêm <span class="fa fa-chevron-right"></span>
+                    </a>
+                </div>
+                <div class="col-lg-6 bottom-right-grids mt-lg-0 mt-5">
+                    <img src="~/Content/LayoutUser/images/pic3.png" alt="" class="img-fluid" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- banner section -->
+    <section class="w3l-stats py-lg-5 py-4" id="stats">
+        <div class="container py-md-5 py-4">
+            <span class="subhny-title mb-2 text-center">Giao nhanh hơn , món ăn ngon hơn.</span>
+            <h3 class="hny-title mb-md-4 mb-2 text-center">
+                Sử dụng để biết thêm chi tiết
+            </h3>
+            <div class="row stats-con">
+                <div class="col-lg-4 col-md-6 stats_info counter_grid">
+
+                    <p class="counter">80+</p>
+                    <h4>
+                        Số đơn nhà hàng nhận 
+                        trong ngày
+                    </h4>
+                </div>
+                <div class="col-lg-4 col-md-6 stats_info counter_grid1">
+                    <p class="counter">500+</p>
+                    <h4>Có hơn 1000 người dùng ,và đặt món mỗi ngày</h4>
+                </div>
+                <div class="col-lg-4 col-md-6 stats_info counter_grid mt-md-0 mt-5">
+
+                    <p class="counter">1000+</p>
+                    <h4>
+                        Sự hài lòng của khách hàng đã đặt .
+                    </h4>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="~/Content/LayoutUser/js/jquery-3.3.1.min.js"></script> <!-- Common jquery plugin -->
+
+    <script src="~/Content/LayoutUser/js/theme-change.js"></script><!-- theme switch js (light and dark)-->
+    <!-- responsive tabs -->
+    <script src="~/Content/LayoutUser/s/jquery-1.9.1.min.js"></script>
+
+    <script src="~/Content/LayoutUser/js/easyResponsiveTabs.js"></script>
+
+    <!--Plug-in Initialisation-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Horizontal Tab
+            $('#parentHorizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true, // 100% fit in a container
+                tabidentify: 'hor_1', // The tab groups identifier
+                activate: function (event) { // Callback function if tab is switched
+                    var $tab = $(this);
+                    var $info = $('#nested-tabInfo');
+                    var $name = $('span', $info);
+                    $name.text($tab.text());
+                    $info.show();
+                }
+            });
+        });
+    </script>
+    <!-- //counter-->
+    <script src="~/Content/LayoutUser/js/owl.carousel.js"></script><!-- owl carousel -->
+    <!-- script for tesimonials carousel slider -->
+    <script>
+        $(document).ready(function () {
+            $("#owl-demo1").owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: false
+                    },
+                    1000: {
+                        items: 1,
+                        nav: false,
+                        loop: false
+                    }
+                }
+            })
+        })
+    </script>
+    <!-- //script for tesimonials carousel slider -->
+    <!--/MENU-JS-->
+    <script>
+        $(window).on("scroll", function () {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function () {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function () {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
+        });
+    </script>
+    <!--//MENU-JS-->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+        $(function () {
+            $('.navbar-toggler').click(function () {
+                $('body').toggleClass('noscroll');
+            })
+        });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="~/Content/LayoutUser/js/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+
+</body>
+
+
+
+</html>
+
+
+
+
+
+
+

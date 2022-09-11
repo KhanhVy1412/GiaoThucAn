@@ -1,0 +1,62 @@
+﻿
+<style>
+    td{
+        border-bottom:1px ;
+        border-right:none;
+        border-left: none;
+    }
+    th{
+        border:0;
+    }
+</style>
+@using QLBB.Models;
+@model List<Giohang>
+
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/Menudoc.cshtml";
+}
+@if (Model.Any() && Model != null)
+{
+<h2 style="text-align:center">THÔNG TIN GIỎ HÀNG</h2>
+<table align="center" border="1"width="80%">
+    <tr style="text-align:center; font-weight:bold;border-bottom:2px">
+        <th>Mã hàng</th>
+        <th>Tên hàng</th>
+        <th>Số lượng</th>
+        <th>Đơn giá</th>
+        <th>Thành tiền</th>
+        <th width="50px"></th>
+        <th width="50px"></th>
+        <th width="width:120px"></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr style="text-align:center; font-weight:bold">
+            <td> @item.iMaSP</td>
+            <td> @item.sTenSP</td>
+            @using (Html.BeginForm("Capnhatgiohang", "Giohang", new { @iMaSp = item.iMaSP, iMaMenu = item.iMaMenu }))
+            {
+                <td>
+                    <input type="number" min="1" name="txtSoluong" value="@item.iSoLuong" style="background-color:#f5dfdf;text-align:right">
+                </td>
+                <td>@String.Format("{0:0,0}", item.iDonGia)</td>
+                <td>@String.Format("{0:0,0}", item.dThanhTien)</td>
+                <td> <a href="@Url.Action("Details", "SPClient", new { id = item.iMaSP })"> Chi Tiết </a></td>
+                <td> @Html.ActionLink("Xóa", "XoaGioHang", new { @iMaSp = item.iMaSP })</td>
+                <td style="width:120px"> <input type="submit" value="Update" /></td>
+            }
+        </tr>
+    }
+    <tr style="font-weight:bold; text-align:right; color:red">
+        <td colspan="3">Số lượng hàng: @ViewBag.Tongsoluong</td>
+        <td colspan="4">Tổng tiền: @String.Format("{0:0,0}", ViewBag.Tongtien) VNĐ</td>
+        <td colspan="8">@Html.ActionLink("Đặt hàng", "DatHang", "GioHang")</td>
+    </tr>
+
+</table>
+}
+else
+{
+    <h3>Giỏ hàng hiện đang trống</h3>
+}

@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/NewLayout.cshtml";
+}
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<style>
+    .list_of_member{
+        width:100%;
+        margin-top:7%;
+        margin-left:3%;
+    }
+    .safe{
+        float:left;
+        width:24%;
+        padding:5px;
+        height:150px;
+        background-color:#fff7f7;
+        margin-left:3%;
+        margin-right:3%;
+        text-align:center;
+        border-radius:6px;
+    }
+    .icon{
+        float:right;
+        width:35%;
+        /*text-align:center;*/
+        padding-top:40px;
+        padding-left:30px;
+        font-size:3rem;
+        color:white;
+        text-align:left;
+    }
+    .icon-text{
+        float:left;
+        width:65%;
+       padding-top:23px;
+        padding-left:18px;
+        color:white;
+    }
+</style>
+<div class="list_of_member">
+    <div class="safe" style="background-color:#0e62c7">
+        <div class="icon-text">
+            <div style="font-size:280%;font-weight:bold;"> @ViewBag.TongDoanhThu </div>
+            <p style="color:#353333">sales</p>
+        </div>
+        <div class="icon" >
+            <i class="fa fa-usd" aria-hidden="true"></i>
+        </div>
+        @*<button class="btn-danger" style="width:100%">View All</button>*@
+    </div>
+
+    <div class="safe" style="background-color:#68b828">
+    <div class="icon-text">
+        <div style="font-size:280%;font-weight:bold;">
+            @ViewBag.SoNguoiTruyCap</div>
+        <p style="color:#353333">visits</p>
+    </div>
+        <div class="icon">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+        </div>
+  </div>
+    <div class="safe" style="background-color:#f7aa47">
+        <div class="icon-text">
+            <div style="font-size:280%;font-weight:bold;">
+                @ViewBag.ThongKeDonHang</div>
+                <p style="color:#353333">orders</p>
+            </div>
+        <div class="icon">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        </div>
+    </div>
+</div>
+
+
